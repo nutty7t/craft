@@ -13,6 +13,18 @@ RUN curl -fsSL https://launchermeta.mojang.com/mc/game/version_manifest.json \
 	| xargs curl -fsSL -o /server.jar
 
 # ──────────────────────────────────────────────────────────────────────
+#  Configure Backup Cron Job
+# ──────────────────────────────────────────────────────────────────────
+
+COPY backup.sh /backup.sh
+COPY crontab.txt /crontab.txt
+COPY entrypoint.sh /entrypoint.sh
+RUN touch /var/log/cron.log
+RUN /usr/bin/crontab /crontab.txt
+RUN chmod 755 /entrypoint.sh /backup.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+# ──────────────────────────────────────────────────────────────────────
 #  Start Minecraft Server
 # ──────────────────────────────────────────────────────────────────────
 
