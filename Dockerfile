@@ -22,12 +22,11 @@ COPY entrypoint.sh /entrypoint.sh
 RUN touch /var/log/cron.log
 RUN /usr/bin/crontab /crontab.txt
 RUN chmod 755 /entrypoint.sh /backup.sh
-ENTRYPOINT ["/entrypoint.sh"]
 
 # ──────────────────────────────────────────────────────────────────────
 #  Start Minecraft Server
 # ──────────────────────────────────────────────────────────────────────
 
 WORKDIR /minecraft
-CMD ["java", "-jar", "/server.jar"]
+ENTRYPOINT ["/entrypoint.sh"]
 
