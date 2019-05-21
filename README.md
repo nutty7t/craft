@@ -3,20 +3,18 @@
 > Deployment through Docker. 12 hour backups.
 
 ``` sh
-# clone repo
-git clone https://github.com/nutty7t/craft && cd craft
-
-# build image
-docker build --tag nuttycraft .
+# pull docker image
+docker pull nutty7t/craft:1.14.1
 
 # start server
 docker run \
+	-e BACKUP_CRONJOB='true' \ # optional
 	--volume=/path/to/server/files:/minecraft \
 	--volume=/path/to/backup/directory:/backups \
 	--network=host \
 	--name=nuttycraft \
 	--detach \
-	nuttycraft:latest
+	nutty7t/craft:1.14.1
 
 # stream server logs
 docker exec --tty nuttycraft tail -f /minecraft/logs/latest.log
