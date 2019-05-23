@@ -2,8 +2,8 @@ IMG_NAME       ?= nutty7t/minecraft-backup
 IMG_TAG        ?= latest
 DATA_DIR       ?= data
 BACKUP_DIR     ?= backups
-ABS_DATA_DIR   := ${CURDIR}/$(DATA_DIR)
-ABS_BACKUP_DIR := ${CURDIR}/$(BACKUP_DIR)
+ABS_DATA_DIR   := ${CURDIR}/../$(DATA_DIR)
+ABS_BACKUP_DIR := ${CURDIR}/../$(BACKUP_DIR)
 
 image:
 	docker build --tag $(IMG_NAME):$(IMG_TAG) $(DOCKER_ARGS) .

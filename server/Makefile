@@ -2,7 +2,7 @@ IMG_NAME       ?= nutty7t/minecraft-server
 IMG_TAG        ?= latest
 CONTAINER_NAME ?= nuttycraft
 DATA_DIR       ?= data
-ABS_DATA_DIR   := ${CURDIR}/$(DATA_DIR)
+ABS_DATA_DIR   := ${CURDIR}/../$(DATA_DIR)
 
 image:
 	docker build --tag $(IMG_NAME):$(IMG_TAG) $(DOCKER_ARGS) .
