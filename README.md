@@ -12,5 +12,8 @@ make -C server stop
 
 # stream server logs
 make -C server logs
+
+# backup the server
+make -C backup backup
 ```
 
