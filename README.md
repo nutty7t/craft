@@ -19,3 +19,5 @@ make -C server logs
 make -C backup backup
 ```
 
+Take a look [here](https://github.com/nutty7t/os/blob/master/k8s/minecraft.yaml) to see how I am using deploying these Docker images in Kubernetes.
+
