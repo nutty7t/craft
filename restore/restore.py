@@ -13,7 +13,7 @@ app = Flask(
 )
 
 app.config["UPLOAD_FOLDER"] = "/tmp"
-app.config["MINECRAFT_FOLDER"] = "/"
+app.config["MINECRAFT_FOLDER"] = "/minecraft"
 
 
 @app.route("/")
