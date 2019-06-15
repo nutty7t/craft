@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <span>Craft</span>
+    <span id="logo">Craft</span>
     <div
       id="background-container"
       @mousehover="hover = true"
@@ -73,7 +73,7 @@ body {
   height: 100%;
 }
 
-span {
+#logo {
   font-family: 'Bungee', cursive;
   font-size: 3em;
   margin-left: 140px;
@@ -84,7 +84,7 @@ span {
 }
 
 // cool psuedo-selector hack
-span:before {
+#logo:before {
   content: 'Nutty';
   color: lighten(black, 25%);
   text-shadow: none;

@@ -1,7 +1,7 @@
 import os
 import pathlib
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 
 
@@ -22,11 +22,11 @@ def serve_vue_app():
 def upload_backup():
     file = request.files.get("file")
     if not file:
-        return "No file attached..."
+        return "No file attached...", 400
     elif file.filename == "":
-        return "No file attached..."
-    elif not filename.endswith("tar.gz"):
-        return "Not a gzipped tarball..."
+        return "No file attached...", 400
+    elif not file.filename.endswith("tar.gz"):
+        return "Not a gzipped tarball...", 400
     else:
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
