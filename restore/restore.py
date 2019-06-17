@@ -45,8 +45,11 @@ def upload_backup():
 
 
 if __name__ == "__main__":
-    if not os.path.isdir(app.config["MINECRAFT_FOLDER"]):
+    server_files = os.listdir(app.config["MINECRAFT_FOLDER"])
+    if "eula.txt" not in server_files:
         print("Minecraft server files not found. Starting restoration server.")
         app.run(host="0.0.0.0")
     else:
-        print("Minecraft server files found! Exiting init container.")
+        print("Minecraft server files found! Exiting init container.\n")
+        for file in server_files:
+            print(f" - {file}")
