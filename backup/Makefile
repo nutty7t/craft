@@ -5,7 +5,10 @@ BACKUP_DIR     ?= backups
 ABS_DATA_DIR   := ${CURDIR}/../$(DATA_DIR)
 ABS_BACKUP_DIR := ${CURDIR}/../$(BACKUP_DIR)
 
-image:
+requirements.txt:
+	pipenv lock -r > requirements.txt
+
+image: requirements.txt
 	docker build --tag $(IMG_NAME):$(IMG_TAG) $(DOCKER_ARGS) .
 
 push:
