@@ -15,9 +15,11 @@ RUN unzip ftb-infinity-server.zip \
 	&& chmod +x FTBInstall.sh ServerStart.sh \
 	&& ./FTBInstall.sh
 
+COPY server.properties .
+
 # ──────────────────────────────────────────────────────────────────────
 #  Start FTB Server
 # ──────────────────────────────────────────────────────────────────────
 
-CMD ["/bin/bash", "/minecraft/ServerStart.sh"]
+CMD ["/bin/sh", "/minecraft/ServerStart.sh"]
 
