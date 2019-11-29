@@ -17,6 +17,11 @@ RUN unzip ftb-infinity-server.zip \
 
 COPY server.properties .
 
+# Patch the Hats mod by iChunUtil. Replace HTTP requests with HTTPS requests.
+# CDNs disallow HTTP requests according to the patch notes:
+# https://github.com/RedstoneTek/HatsDownloader
+COPY Hats-4.0.1.jar mods/Hats-4.0.1.jar
+
 # ──────────────────────────────────────────────────────────────────────
 #  Start FTB Server
 # ──────────────────────────────────────────────────────────────────────
