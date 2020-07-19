@@ -1,5 +1,5 @@
 IMG_NAME       ?= nutty7t/minecraft-ftb-server
-IMG_TAG        ?= latest
+IMG_TAG        ?= revelation
 CONTAINER_NAME ?= nuttycraft-ftb
 DATA_DIR       ?= data
 ABS_DATA_DIR   := ${CURDIR}/../$(DATA_DIR)
