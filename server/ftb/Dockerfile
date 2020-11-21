@@ -2,25 +2,22 @@ FROM openjdk:8u201-jre-alpine
 RUN apk --no-cache add curl
 
 # ──────────────────────────────────────────────────────────────────────
-#  Download FTB Revelation
+#  Download GregTech: New Horizons
 # ──────────────────────────────────────────────────────────────────────
 
 WORKDIR /minecraft
-RUN curl -fsSL -o ftb-revelation-server.zip \
-	https://media.forgecdn.net/files/2778/975/FTBRevelationServer_3.2.0.zip
+RUN curl -o ftb-gtnh-server.zip \
+	http://downloads.gtnewhorizons.com/ServerPacks/GTNewHorizonsServer-1.7.10-2.0.9.0.zip
 
-RUN unzip ftb-revelation-server.zip \
-	&& rm ftb-revelation-server.zip \
+RUN unzip ftb-gtnh-server.zip \
+	&& rm ftb-gtnh-server.zip \
 	&& echo "eula=TRUE" > eula.txt \
-	&& chmod +x ServerStart.sh
+	&& chmod +x startserver.sh
 
 COPY server.properties .
 
-# Install additional mods.
-COPY mods/ mods/
-
 # ──────────────────────────────────────────────────────────────────────
-#  Start FTB Server
+#  Link Start!
 # ──────────────────────────────────────────────────────────────────────
 
-CMD ["/bin/sh", "/minecraft/ServerStart.sh", "-Dfml.queryResult=confirm"]
+CMD ["/bin/sh", "/minecraft/startserver.sh", "-Dfml.queryResult=confirm"]
